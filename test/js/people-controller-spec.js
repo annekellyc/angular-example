@@ -1,20 +1,19 @@
-var chai = require('../../node_modules/chai/chai');
-var assert = chai.assert;
-var angular = require('angular-node');
-	require('../../app/js/people-controller.js');
-
-
-describe("People", function() {
-	var controller, scope;
-	beforeEach(module('angularDojo'));
+describe("People Controller", function() {
+	var $rootScope, $scope, $controller;
 	
-	beforeEach(inject(function($rootScope, $controller) {
-    scope = $rootScope.$new();
-		controller = $controller('PeopleController', { $scope: scope });
-  	}));
+	beforeEach(module('angular-dojo'));
+	beforeEach(inject(function($injector) {
+    $rootScope = $injector.get('$rootScope');
+		$scope = $rootScope.$new();
+		$controller = $injector.get('$controller');
+  }));
 	
 	it("insert person name", function() {
-		controller.insertPerson('Anne');
-		assert.deepEqual($scope.people, ['Anne']);
+		$controller('PeopleController', {
+			'$scope': $scope
+		});
+		
+		$scope.insertPerson('Anne');
+		$scope.people.should.be.deep.equal(['Anne']);
 	});
 });

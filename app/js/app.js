@@ -1,1 +1,1 @@
-var app = angular.module("angularDojo", []);
+var app = angular.module("angular-dojo", []);
