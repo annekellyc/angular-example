@@ -4,7 +4,11 @@
 		<title>Welcome</title>
 		<script src="../node_modules/angular/angular.js"></script>
 		<script src="js/app.js"></script>
+		<script src="js/people-controller.js"></script>
 	</head>
 	<body>
+		<div ng-controller="PeopleController">
+			<h1>{{ name }}</h1>
+		</div>
 	</body>
 </html>
