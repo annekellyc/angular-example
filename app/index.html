@@ -8,7 +8,22 @@
 	</head>
 	<body>
 		<div ng-controller="PeopleController">
-			<h1>{{ name }}</h1>
+			<h2>Add Person</h2>
+			<input type="text" ng-model="person"></input>
+			<input type="button" ng-click="add(person)" value="add" />
+			<input type="button" ng-click="clear()" value="clear" /><br/><br/>
+			
+			<h3>People List</h3>
+			<label ng-show="!people.length" style="font-style: italic;">empty list</label>
+			<div ng-show="people.length" ng-repeat="person in people track by $index">
+				<input type="checkbox" name="$index" ng-model="person.selected">{{ person.name }}</input>
+			</div>
+			
+			<h3>Selected People</h3>
+			<label ng-show="!peopleSelected.length" style="font-style: italic;">empty list</label>
+			<div ng-show="peopleSelected.length" ng-repeat="personName in peopleSelected">
+				<label>{{ personName }}</label>
+			</div>	
 		</div>
 	</body>
 </html>
